@@ -15,6 +15,8 @@ void cpp(){
     cout.tie(NULL);
 }
 
+
+// Intuition: Problem can seen as Cyclic Graph. Why Cyclic Graph? - Only one incoming and outgoing edge. 
 void solve() {
     lli n; cin >> n;
     vi p(n);
