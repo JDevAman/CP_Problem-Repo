@@ -2,6 +2,9 @@
 using namespace std;
 
 #define lli long long int
+typedef set<lli> sti;          
+typedef pair<lli, lli> pli;    
+typedef map<lli, lli> mli;     
 
 void cpp(){
     ios_base::sync_with_stdio(false);
@@ -12,60 +15,71 @@ void cpp(){
 void solve() {
     lli h, w, q;
     cin >> h >> w >> q;
-    vector<vector<bool>> grid(h, vector<bool>(w, true));
+    
+    // Initialize rows and cols sets correctly
+    vector<sti> rows(h), cols(w);
     lli ans = h * w;
 
-    for(int k = 0; k < q; k++) {
-        int i, j;
-        cin >> i >> j;
-        i--;
-        j--;
-
-        if(grid[i][j]) {
-            grid[i][j] = false;
-            ans--;
+    // Fill in the rows and cols sets with initial grid values
+    for(int i = 0; i < h; i++) {
+        for(int j = 0; j < w; j++) {
+            rows[i].insert(j);
+            cols[j].insert(i);
         }
+    }
 
-        else{
-            for(int row = i - 1; row >= 0; row--) {
-                if(grid[row][j]) {
-                    grid[row][j] = false;
-                    ans--;
-                    break;
-                }
+    // Lambda to erase the element from both row and column sets
+    auto erase = [&](lli i, lli j) {
+        rows[i].erase(j);
+        cols[j].erase(i);
+    };
+
+    while(q--) {
+        lli r, c;
+        cin >> r >> c;
+        r--; c--;
+
+        if(rows[r].count(c)) {
+            erase(r, c);
+            ans--;
+        } else {
+            // Up: find the first element above (in the same column)
+            auto it = cols[c].lower_bound(r);
+            if(it != cols[c].begin()) {
+                --it;
+                erase(*it, c); 
+                ans--;
             }
-            for(int row = i + 1; row < h; row++) {
-                if(grid[row][j]) {
-                    grid[row][j] = false;
-                    ans--;
-                    break;
-                }
+
+            // Down: find the first element below (in the same column)
+            it = cols[c].upper_bound(r);
+            if(it != cols[c].end()) {
+                erase(*it, c);
+                ans--;
             }
-            for(int col = j - 1; col >= 0; col--) {
-                if(grid[i][col]) {
-                    grid[i][col] = false;
-                    ans--;
-                    break;
-                }
+
+            // Left: find the first element to the left (in the same row)
+            it = rows[r].lower_bound(c);
+            if(it != rows[r].begin()) {
+                --it;
+                erase(r, *it);
+                ans--;
             }
-            for(int col = j + 1; col < w; col++) {
-                if(grid[i][col]) {
-                    grid[i][col] = false;
-                    ans--;
-                    break;
-                }
+
+            // Right: find the first element to the right (in the same row)
+            it = rows[r].upper_bound(c); 
+            if(it != rows[r].end()) {
+                erase(r, *it);
+                ans--;
             }
         }
     }
     cout << ans << endl;
 }
 
-int main() {   
+int main() {
     cpp(); 
     int t = 1;
-
-    // Uncomment if there are multiple test cases
-    // cin >> t;
     while (t--) {
         solve();
     }
