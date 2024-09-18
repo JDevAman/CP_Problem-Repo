@@ -15,12 +15,9 @@ void cpp(){
 void solve() {
     lli h, w, q;
     cin >> h >> w >> q;
-    
-    // Initialize rows and cols sets correctly
     vector<sti> rows(h), cols(w);
     lli ans = h * w;
 
-    // Fill in the rows and cols sets with initial grid values
     for(int i = 0; i < h; i++) {
         for(int j = 0; j < w; j++) {
             rows[i].insert(j);
@@ -28,7 +25,6 @@ void solve() {
         }
     }
 
-    // Lambda to erase the element from both row and column sets
     auto erase = [&](lli i, lli j) {
         rows[i].erase(j);
         cols[j].erase(i);
