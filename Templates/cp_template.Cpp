@@ -1,18 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long int
+// Type Aliases
+#define int long long
 #define vi vector<int>
 #define si set<int>
-#define mi map<int,int>
+#define mi map<int, int>
 #define pi pair<int, int>
-# define yes cout<<"Yes"<<endl
-# define no cout<<"No"<<endl
 
-// Returns array of Primes in O n * (log(logn))
+// Utility Aliases
+#define pq_min priority_queue<int, vector<int>, greater<int>> 
+#define pq_max priority_queue<int>
+
+// Output Shorthand
+#define yes cout << "Yes" << endl
+#define no cout << "No" << endl
+
+void haribhakt_fastio() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
+// Function to return an array of primes up to `maxN` in O(n * log(log(n)))
 // vector<int> sieve(int maxN) {
 //     vector<bool> isPrime(maxN + 1, true);
 //     isPrime[0] = isPrime[1] = false;
+
 //     for (int i = 2; i * i <= maxN; ++i) {
 //         if (isPrime[i]) {
 //             for (int j = i * i; j <= maxN; j += i) {
@@ -20,6 +34,7 @@ using namespace std;
 //             }
 //         }
 //     }
+
 //     vector<int> primes;
 //     for (int i = 2; i <= maxN; ++i) {
 //         if (isPrime[i]) {
@@ -29,31 +44,12 @@ using namespace std;
 //     return primes;
 // }
 
-void haribhakt() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-}
-
 void solve() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for(int i=0; i<n; i++){
-        cin>>a[i];
-    }
 
-    for(int i=1; i<n; i++){
-        if(abs(a[i] - a[i-1]) != 5  && abs(a[i] - a[i-1]) != 7){
-            no;
-            return;
-        }
-    }
-    yes;
 }
 
-signed main() {
-    haribhakt();
+signed main() {   
+    haribhakt_fastio(); 
     int t;
     cin >> t;
     while (t--) {
