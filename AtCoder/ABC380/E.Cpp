@@ -1,51 +1,75 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
+// Type Aliases
 #define int long long
 #define vi vector<int>
 #define si set<int>
-#define mi map<int,int>
+#define mi map<int, int>
 #define pi pair<int, int>
-#define yes cout<<"Yes"<<endl
-#define no cout<<"No"<<endl
 
-void solve() {
-    int n, m;
-    cin >> n >> m;
-    vector<int> arr(n);
+// Utility Aliases
+#define pq_min priority_queue<int, vector<int>, greater<int>> 
+#define pq_max priority_queue<int>
 
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
-    }
+// Output Shorthand
+#define yes cout << "Yes" << endl
+#define no cout << "No" << endl
 
-    vector<int> prefix(n + 1, 0);
-    // Finding unique subarray sums
-    map<int, int> modUnique;
-
-    // Calculate prefix sums
-    for (int i = 0; i < n; i++) {
-        prefix[i + 1] = prefix[i] + arr[i];
-    }
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < i; j++) {
-            int subarraySum = prefix[i] - prefix[j];
-            modUnique[subarraySum%m]++; 
-        }
-    }
-
-    int ans = 0;
-    for(auto it: modUnique){
-        ans += it.first * it.second;
-    }
-    cout<<ans<<endl;
-}
-
-signed main() {
+void haribhakt_fastio() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
-    solve();
+    cout.tie(NULL);
+}
+
+// Segmented Sieve
+// vector<int> sieve(int n) {
+//     vector<bool> isPrime(n + 1, true);                
+//     isPrime[0] = false; 
+//     isPrime[1] = false;               
+
+//     for (int div = 2; div * div <= n; div++) {
+//         if (isPrime[div]) {
+//             for (int multiple = div * div; multiple <= n; multiple += div) {
+//                 isPrime[multiple] = false;
+//             }
+//         }
+//     }
+
+//     vector<int> primes;
+//     for (int i = 2; i <= n; i++) {
+//         if (isPrime[i]) primes.push_back(i);
+//     }
+//     return primes;
+// }
+// vector<int> getPrimesInRange(int l, int r, const vector<int>& basePrimes) {
+//     vector<bool> isPrime(r - l + 1, true); 
+//     for (int prime : basePrimes) {
+//         long long start = max((long long)prime * prime, ((long long)l + prime - 1) / prime * prime);
+//         for (long long multiple = start; multiple <= r; multiple += prime) {
+//             isPrime[multiple - l] = false;
+//         }
+//     }
+
+//     vector<int> primesInRange;
+//     for (int i = 0; i < isPrime.size(); i++) {
+//         if (isPrime[i] && (i + l) >= 2) {
+//             primesInRange.push_back(i + l);
+//         }
+//     }
+//     return primesInRange;
+// }
+
+void solve() {
+
+}
+
+signed main() {   
+    haribhakt_fastio(); 
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
+    }
     return 0;
 }
