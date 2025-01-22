@@ -23,18 +23,24 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
+    map<int, int> freq;
+    for(int i=0; i<4; i++){
         int x; cin>>x;
-        cout<<n-x+1<<" ";
+        freq[x]++;
     }
-    cout<<endl;
+
+    if(freq.size() != 2){
+        cout<<"No"<<endl; return;
+    }
+    else{
+        cout<<"Yes"<<endl; return;
+    }
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

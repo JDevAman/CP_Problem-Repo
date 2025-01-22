@@ -23,18 +23,15 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
-    }
-    cout<<endl;
+    string s; cin>>s;
+    int num = (s[0]-'0') * (s[2]-'0');
+    cout<<num<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

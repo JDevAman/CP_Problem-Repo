@@ -1,18 +1,16 @@
 #include <bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Type Aliases
 #define int long long
 #define vi vector<int>
 #define si set<int>
 #define mi map<int, int>
 #define pi pair<int, int>
 
-// Utility Aliases
 #define pq_min priority_queue<int, vector<int>, greater<int>> 
 #define pq_max priority_queue<int>
 
-// Output Shorthand
 #define yes cout << "Yes" << endl
 #define no cout << "No" << endl
 
@@ -22,19 +20,20 @@ void haribhakt_fastio() {
     cout.tie(NULL);
 }
 
+
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
-    }
-    cout<<endl;
+	int a,b,c,d;
+	cin>>a>>b>>c>>d;
+	int ans = 1;
+	if((c-b) == (d-c)) ans++;
+	if((c-b) == a+b || (d-c) == (a+b)) ans++;
+	cout<<ans<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
     int t;
-    cin >> t;
+    cin>>t;
     while (t--) {
         solve();
     }

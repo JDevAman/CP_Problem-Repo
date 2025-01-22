@@ -23,12 +23,10 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
-    }
-    cout<<endl;
+    string s; cin>>s;
+    int n = s.length();
+    int ans = 9 * (n-1) + (s[0]-'0');
+    cout<<ans<<endl;
 }
 
 signed main() {   

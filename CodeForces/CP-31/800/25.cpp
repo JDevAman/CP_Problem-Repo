@@ -24,11 +24,15 @@ void haribhakt_fastio() {
 
 void solve() {
     int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+    string str; cin>>str;
+    int s = 0, e = n-1;
+    while(s < e){
+        if(str[s] != str[e]){
+            s++; e--;
+        }
+        else break;
     }
-    cout<<endl;
+    cout<<(e-s+1)<<endl;
 }
 
 signed main() {   

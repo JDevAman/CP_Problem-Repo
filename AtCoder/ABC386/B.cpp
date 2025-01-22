@@ -22,19 +22,40 @@ void haribhakt_fastio() {
     cout.tie(NULL);
 }
 
+// Directions for BFS
+vector<int> dx = {0, 0, 1, -1};
+vector<int> dy = {1, -1, 0, 0};
+
+
+
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+    string s; cin>>s;
+    int ans = 0, consZero = 0;
+    for(auto ch: s){
+        // if 0 -> and next is also 0
+        if(ch == '0'){
+            consZero++;
+        }
+        else{
+            if(consZero > 0){
+                ans += (consZero + 1)/2;
+                consZero = 0;
+            }
+            ans++;
+        }
     }
-    cout<<endl;
+    // zero at last
+    if(consZero > 0){
+        ans += (consZero + 1)/2;
+        consZero = 0;
+    }
+    cout<<ans<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

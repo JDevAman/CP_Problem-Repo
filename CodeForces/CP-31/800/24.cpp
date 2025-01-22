@@ -23,12 +23,20 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
+    int n, bitXOR = 0; cin>>n;
     for(int i=0; i<n; i++){
         int x; cin>>x;
-        cout<<n-x+1<<" ";
+        bitXOR ^= x;
     }
-    cout<<endl;
+
+    if(n % 2 == 0){
+        if(bitXOR == 0) cout<<0<<endl;
+        else cout<<-1<<endl; 
+    }
+    else{
+        // x -> bitXOR
+        cout<<bitXOR<<endl;
+    }
 }
 
 signed main() {   

@@ -23,12 +23,11 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
-    }
-    cout<<endl;
+    int n, a,b; cin>>n>>a>>b;
+    if(n == a && a == b){ cout<<"YES"<<endl; return;}
+    int start = a-1, end = n-b;
+    if(start >= end || end - start <= 2) cout<<"NO"<<endl;
+    else cout<<"YES"<<endl;
 }
 
 signed main() {   

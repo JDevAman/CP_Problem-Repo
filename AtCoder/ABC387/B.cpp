@@ -23,18 +23,21 @@ void haribhakt_fastio() {
 }
 
 void solve() {
-    int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+    int x; cin>>x;
+    int sum = 2025;
+    int count = 0;
+    for(int i=1; i<=9; i++){
+        if(x%i == 0 && x/i <= 9) count++;
     }
-    cout<<endl;
+
+    sum -= count*x;
+    cout<<sum;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

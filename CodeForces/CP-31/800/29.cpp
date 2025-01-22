@@ -24,11 +24,20 @@ void haribhakt_fastio() {
 
 void solve() {
     int n; cin>>n;
+    vi nums(n);
     for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+        cin>>nums[i];
     }
-    cout<<endl;
+
+    int ans = 0;
+    if(n == 1){
+        cout<<ans<<endl; return;
+    }
+
+    for(int i=1; i<n; i++){
+        if(nums[i]%2 == nums[i-1]%2) ans++;
+    }
+    cout<<ans<<endl;
 }
 
 signed main() {   

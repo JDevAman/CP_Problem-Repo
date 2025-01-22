@@ -24,17 +24,23 @@ void haribhakt_fastio() {
 
 void solve() {
     int n; cin>>n;
-    for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+    int lastI = 0, lastV = 0; 
+    int ans = 0;
+    for(int i = 0; i<n; i++){
+        int time, vol;
+        cin>>time>>vol;
+        if(lastI != 0) lastV -= (time - lastI); 
+        lastV = max(lastV, 0LL);
+        lastV += vol;
+        lastI = time;
     }
-    cout<<endl;
+    cout<<lastV;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

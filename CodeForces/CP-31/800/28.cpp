@@ -24,9 +24,33 @@ void haribhakt_fastio() {
 
 void solve() {
     int n; cin>>n;
+    vi nums(n);
+    // bool for ugly
+    int sum = 0; bool ugly = false;
     for(int i=0; i<n; i++){
-        int x; cin>>x;
-        cout<<n-x+1<<" ";
+        cin>>nums[i];
+        if(sum == nums[i]){
+            ugly = true;
+        }
+        sum += nums[i];
+    }
+
+    if(ugly){
+        sort(nums.begin(), nums.end(), greater<int>());
+        bool flag = false;
+        for(int i=1; i<n; i++){
+            if(nums[i] != nums[0]){
+                swap(nums[1], nums[i]);
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){ cout<<"NO"<<endl; return; }
+    }
+
+    cout<<"YES"<<endl;
+    for(auto num: nums){
+        cout<<num<<" ";
     }
     cout<<endl;
 }
