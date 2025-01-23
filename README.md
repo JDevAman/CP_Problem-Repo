@@ -5,5 +5,6 @@ Hello, I am Aman Kumar an average CS Enthusiast wanna be Software Engineer. I li
 
 # GOAL
 
-- I am currently on my goal to reach pupil by the end of this year.
+- I am currently on my goal to reach pupil by the march 2025.
 - I also would love to explore LLMs, Augmented Reality next year.
+
