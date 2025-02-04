@@ -53,11 +53,13 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    // a to a+(c-b)
-    // b to a+c/2
-    // c to c+(a-b)
+    int n; cin>>n;
+    int num = (2<<31) - 1;
+    for(int i=0; i<n; i++){
+        int x; cin>>x;
+        num &= x;
+    }
+    cout<<num<<endl;
 }
 
 signed main() {   

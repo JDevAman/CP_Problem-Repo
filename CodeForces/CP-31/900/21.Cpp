@@ -53,11 +53,42 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    // a to a+(c-b)
-    // b to a+c/2
-    // c to c+(a-b)
+    string s; cin>>s;
+    int n = s.length();
+    vector<int> locations(4, -1);
+    int ans = INT_MAX;
+    for(int i=0; i<n; i++){
+        int temp = INT_MIN;
+        if(s[i] == '0'){
+            // 0
+            if(locations[0] != -1){
+                temp = (n-i-1) + (i-locations[0]-1);
+                ans = min(ans, temp);
+            }
+            //5
+            if(locations[2] != -1){
+                temp = (n-i-1) + (i-locations[2]-1);
+                ans = min(ans, temp);
+            }
+            locations[0] = i;
+        }
+        else if(s[i] == '5'){
+            //2
+            if(locations[1] != -1){
+                temp = (n-i-1) + (i-locations[1]-1);
+                ans = min(ans, temp);
+            }
+            //7
+            if(locations[3] != -1){
+                temp = (n-i-1) + (i-locations[3]-1);
+                ans = min(ans, temp);
+            }
+            locations[2] = i;
+        }
+        else if(s[i] == '2') locations[1] = i;
+        else if(s[i] == '7') locations[3] = i;
+    }
+    cout<<ans<<endl;
 }
 
 signed main() {   

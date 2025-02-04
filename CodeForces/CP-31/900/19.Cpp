@@ -53,11 +53,25 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    // a to a+(c-b)
-    // b to a+c/2
-    // c to c+(a-b)
+    int x0, n; 
+    cin>>x0>>n;
+    int rem = n%4, toAdd = 0;
+    if(rem == 0) toAdd = 0;
+    else if(rem == 1){
+        if(x0&1) toAdd = n;
+        else toAdd -= n;
+    }
+    else if(rem == 2){
+        if(x0&1) toAdd -= 1;
+        else toAdd = 1;
+    }
+    // 3
+    else{
+        if(x0&1) toAdd -= (n+1);
+        else toAdd = (n+1);
+    }
+    // cout<<"toAdd "<<toAdd<<endl;
+    cout<<x0+toAdd<<endl;
 }
 
 signed main() {   

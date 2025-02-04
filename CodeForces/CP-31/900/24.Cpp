@@ -53,11 +53,16 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    // a to a+(c-b)
-    // b to a+c/2
-    // c to c+(a-b)
+    int x,y; cin>>x>>y;
+    int diff = abs(x-y);
+    if(diff == 0) cout<<"0 0"<<endl;
+    else{
+        cout<<diff<<" ";
+        int rem = min(x,y) % diff;
+        if(rem >= diff - rem)  cout<<diff-rem<<endl;
+        else cout<<rem<<endl;
+    }
+    
 }
 
 signed main() {   

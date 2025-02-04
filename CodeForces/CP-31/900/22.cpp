@@ -2,7 +2,7 @@
 using namespace std;
 
 // Type Aliases
-#define int long long
+#define int long long int
 #define vi vector<int>
 #define si set<int>
 #define mi map<int, int>
@@ -53,11 +53,19 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    // a to a+(c-b)
-    // b to a+c/2
-    // c to c+(a-b)
+    int n; cin>>n;
+    int oneCnt = 0, zeroCnt = 0;
+    for(int i=0; i<n; i++){
+        int x; cin>>x;
+        if(x == 1) oneCnt++;
+        if(x == 0) zeroCnt++;
+    }
+    // int ans = (1<<zeroCnt); 
+    // ans *= oneCnt;
+    // int ans = pow(2, zeroCnt) * oneCnt;
+    int ans = (int)pow(2, zeroCnt) * oneCnt;
+
+    cout<<ans<<endl;
 }
 
 signed main() {   
@@ -69,3 +77,4 @@ signed main() {
     }
     return 0;
 }
+ 
