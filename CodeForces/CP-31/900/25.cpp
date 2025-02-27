@@ -53,12 +53,9 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    string s; cin>>s;
-    int n = s.length();
-    if(s[0] != s[n-1]){
-        s[0] = s[n-1];
-    }
-    cout<<s<<endl;
+    int n, m, x, y; 
+    cin>>n>>m>>x>>y;
+    cout<<1<<" "<<1<<" "<<n<<" "<<m<<endl;    
 }
 
 signed main() {   

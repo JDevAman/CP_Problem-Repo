@@ -54,16 +54,19 @@ void haribhakt_fastio() {
 
 void solve() {
     string s; cin>>s;
-    int n = s.length();
-    if(s[0] != s[n-1]){
-        s[0] = s[n-1];
+    int oneCnt = 0, zeroCnt = 0;
+    for(auto ch: s){
+        if(ch == '0') zeroCnt++;
+        else oneCnt++;
     }
-    cout<<s<<endl;
+    int minCnt = min(zeroCnt, oneCnt);
+    if(minCnt & 1) cout<<"DA"<<endl;
+    else cout<<"NET"<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
         solve();

@@ -53,17 +53,22 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    string s; cin>>s;
-    int n = s.length();
-    if(s[0] != s[n-1]){
-        s[0] = s[n-1];
+    int n,x; cin>>n>>x;
+    int sum = 0, minAns = 0, maxAns = 0;
+    for(int i=0; i<n; i++){
+        int num; cin>>num;
+        maxAns += num/x;
+        if(num%x != 0) maxAns++;
+        sum += num;
     }
-    cout<<s<<endl;
+    minAns = sum/x;
+    if(sum % x != 0) minAns++;
+    cout<<minAns<<" "<<maxAns<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
         solve();

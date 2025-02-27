@@ -1,18 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Type Aliases
 #define int long long
 #define vi vector<int>
 #define si set<int>
 #define mi map<int, int>
 #define pi pair<int, int>
 
-// Utility Aliases
 #define pq_min priority_queue<int, vector<int>, greater<int>> 
 #define pq_max priority_queue<int>
 
-// Output Shorthand
 #define yes cout << "Yes" << endl
 #define no cout << "No" << endl
 
@@ -22,31 +19,28 @@ void haribhakt_fastio() {
     cout.tie(NULL);
 }
 
-// find smalles
-
+// Find contiguous W..A -> AAAACCC
 void solve() {
-    int n; cin>>n;
-    vector<int> nums(n);
+    string s; cin>>s;
+    int n = s.length();
+    int cnt = 0;
     for(int i=0; i<n; i++){
-        cin>>nums[i];
-    }
-
-    for(int i=0; i<n-1; i++){
-        int temp = INT_MAX;
-        for(int j=i+1; j<n; j++){
-            temp = min(__gcd(nums[i], nums[j]), temp);
-        }
-        if(temp <= 2){
-            yes; return;
+        if(s[i] == 'W')  cnt++;
+        else{
+            if(s[i] == 'A' && cnt > 0){
+                for(int st = i-cnt+1; st<=i; st++)
+                    s[st] = 'C';
+                s[i-cnt]='A';
+            }
+            cnt = 0;
         }
     }
-    no;
+    cout<<s<<endl;
 }
 
-signed main() {   
-    haribhakt_fastio(); 
-    int t;
-    cin >> t;
+signed main() {
+    haribhakt_fastio();
+    int t = 1;
     while (t--) {
         solve();
     }

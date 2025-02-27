@@ -22,31 +22,30 @@ void haribhakt_fastio() {
     cout.tie(NULL);
 }
 
-// find smalles
+static bool comp(const string& a, const string& b){
+    if(a.size() > b.size()) return false;
+    return true;
+}
 
 void solve() {
     int n; cin>>n;
-    vector<int> nums(n);
+    vector<string> res(n);
     for(int i=0; i<n; i++){
-        cin>>nums[i];
+        cin>>res[i];
     }
 
-    for(int i=0; i<n-1; i++){
-        int temp = INT_MAX;
-        for(int j=i+1; j<n; j++){
-            temp = min(__gcd(nums[i], nums[j]), temp);
-        }
-        if(temp <= 2){
-            yes; return;
-        }
+    sort(res.begin(), res.end(), comp);
+    string t;
+    for(int i=0; i<n; i++){
+        t.append(res[i]);
     }
-    no;
+    cout<<t<<endl;
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     while (t--) {
         solve();
     }

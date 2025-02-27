@@ -55,22 +55,18 @@ void haribhakt_fastio() {
 void solve() {
     int n; cin>>n;
     vi nums(n);
-    int maxEle = INT_MIN, minEle = INT_MAX;
+    bool notZero = false;
+    int cnt = 0;
     for(int i=0; i<n; i++){
         cin>>nums[i];
-        minEle = min(minEle, nums[i]);
-        maxEle = max(maxEle, nums[i]);
+        if(nums[i] != 0){
+            if(!notZero){ 
+                cnt++; notZero = true;
+            }
+        }
+        else notZero = false;
     }
-    
-    int ans = (nums[n-1] - nums[0]);
-    // find max diff b/w nums rn.
-    for(int i=1; i<n; i++){
-        ans = max(ans, (nums[i-1] - nums[i]));
-    }
-    ans = max(ans, (nums[n-1] - minEle));
-    ans = max(ans, (maxEle - nums[0]));
-    // either minimize nums[0], maximize nums[n-1]
-    cout<<ans<<endl;
+    cout<<min(cnt, 2LL)<<endl;
 }
 
 signed main() {   

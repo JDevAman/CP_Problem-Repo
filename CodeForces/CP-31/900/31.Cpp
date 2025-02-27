@@ -16,33 +16,42 @@ using namespace std;
 #define yes cout << "Yes" << endl
 #define no cout << "No" << endl
 
-void haribhakt_fastio() {
+void fast_io() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 }
 
+int factors(int num, int div){
+    int cnt = 0;
+    while(num % div == 0){
+        if(num%div == 0){ num /= div; cnt++; }
+        else break;
+    }
+    return cnt;
+}
 void solve() {
     int n; cin>>n;
-    vi nums(n);
-    int maxEle = INT_MIN, minEle = INT_MAX;
-    for(int i=0; i<n; i++){
-        cin>>nums[i];
+    if(n == 1){
+        cout<<0<<endl;
+        return;
     }
-
-    if(nums[0] == 1) nums[0]++;
-    for(int i=0; i<n-1; i++){
-        while(nums[i+1] % nums[i] == 0 || nums[i+1] == 1) nums[i+1]++;
+    int digitSum = 1 + (n-1)%9;
+    if(digitSum % 3 != 0){
+        cout<<-1<<endl;
+        return;
     }
-
-    for(int i=0; i<n; i++){
-        cout<<nums[i]<<" ";
+    int twoCnt = factors(n, 2), threeCnt = factors(n, 3);
+    int prod = pow(2, twoCnt) * pow(3, threeCnt);
+    if(prod != n || twoCnt > threeCnt){
+        cout<<-1<<endl;
+        return;
     }
-    cout<<endl;
+    cout<< 2*(threeCnt) - twoCnt<<endl;
 }
 
-signed main() {   
-    haribhakt_fastio(); 
+signed main() {
+    fast_io();
     int t;
     cin >> t;
     while (t--) {

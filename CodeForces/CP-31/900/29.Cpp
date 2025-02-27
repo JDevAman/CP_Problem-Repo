@@ -53,17 +53,31 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    string s; cin>>s;
-    int n = s.length();
-    if(s[0] != s[n-1]){
-        s[0] = s[n-1];
+    int n; cin>>n;
+    vi nums(n);
+    for(int i=0; i<n; i++){
+        cin>>nums[i];
     }
-    cout<<s<<endl;
+    bool inc = false, dec = false;
+    int incPre = -1, incNex = -1;
+    for(int i=1; i<n; i++){
+        if(nums[i] > nums[i-1]){ 
+            inc = true; incPre = i-1, incNex = i;
+        }
+        if(nums[i] < nums[i-1]){
+            if(inc){ 
+                cout<<"YES"<<endl;
+                cout<<incPre+1<<" "<<incNex+1<<" "<<i+1<<endl;
+                return;
+            }
+        }
+    }
+    cout<<"NO"<<endl; 
 }
 
 signed main() {   
     haribhakt_fastio(); 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
         solve();

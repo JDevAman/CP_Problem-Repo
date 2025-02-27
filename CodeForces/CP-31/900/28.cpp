@@ -53,12 +53,18 @@ void haribhakt_fastio() {
 // }
 
 void solve() {
-    string s; cin>>s;
-    int n = s.length();
-    if(s[0] != s[n-1]){
-        s[0] = s[n-1];
+    int n, k; cin>>n>>k;
+    int total = n*k;
+    vector<int> nums(total);
+    for(int i=0; i<total; i++){
+        cin>>nums[i];
     }
-    cout<<s<<endl;
+    int rem = n/2, sum = 0, cnt = 0;
+    for(int i=total-rem-1; cnt < k; i -= (rem+1)){
+        cnt++;
+        sum += nums[i];    
+    }
+    cout<<sum<<endl;
 }
 
 signed main() {   
